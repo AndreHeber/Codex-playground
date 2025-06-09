@@ -1,62 +1,31 @@
-🧩 Core Goals
+# Unified Content Collaboration Platform
 
-    Integrate diverse formats: Blog posts, emails, chats, forums, and SIP call metadata/transcripts.
+This project is an experiment in consolidating multiple communication formats—blogs, chats, forums, and call transcripts—into a single, self-hosted service. Creators can publish in their preferred formats while collaborators can read or interact using whichever interface they like. Content is stored once and automatically transformed for different views.
 
-    Support self-hosting: The app must be easy to run independently on a home server.
+## Key Goals
 
-    Enable decentralized sharing: Instances should federate or sync selectively with others.
+- **Creator freedom, consumer choice**: A blog post, chat message, or call transcript can be viewed as email, forum thread, or chat depending on user preference.
+- **Easy self-hosting**: Runs as a single Go binary backed by SQLite.
+- **Decentralized sharing**: Instances may federate with each other for public content.
+- **Privacy first**: Uses established end-to-end encryption libraries for private data.
 
-🏗️ Architecture Overview
-Backend
+## Technology Overview
 
-    Language: Go or Rust — fast, compiled, excellent for self-hosted apps.
+- **Backend**: Go
+- **Storage**: SQLite (with optional encrypted mode)
+- **Frontend**: Basic HTML5 components with light JavaScript
+- **Content model**: Markdown with metadata for easy transformation
 
-    Data Storage: SQLite for simplicity or PostgreSQL for more advanced querying.
+## Repository Structure
 
-    Content Model: Use a unified internal format (e.g. Markdown + metadata) that can map to emails, blog posts, chat logs, etc.
+- `SERVICE_REQUIREMENTS.md` – functional and technical requirements for the service
+- `README.md` – this file
 
-Federation/Decentralization
+## Getting Started
 
-    Protocol: Consider ActivityPub (used by Mastodon) for blogs/forums/posts; for calls, you might define a simple replication protocol or use Matrix for chat + SIP bridging.
+1. Install Go (version 1.20 or newer recommended).
+2. Clone this repository.
+3. Run `go build` to compile the binary.
+4. Start the service with `./<binary>` (details will be added as implementation evolves).
 
-    Discovery: Each instance can publish a manifest (like RSS or .well-known/) to share which content is public.
-
-Frontend
-
-    Tech: SvelteKit, Astro, or React — depends on your preferences.
-
-    Interface Ideas:
-
-        Unified inbox or timeline view
-
-        Filter by content type (email/chat/call/post)
-
-        Threaded conversations across formats
-
-📡 Data Sources and Bridging
-
-    Email: IMAP/SMTP (e.g. use Mailpile or Haraka)
-
-    Chat: Bridge with Matrix or XMPP
-
-    Forum: Use Discourse-like structure, maybe compatible with Jekyll for static export
-
-    Blog: Markdown-based blog engine with comments
-
-    SIP Calls:
-
-        Capture metadata (call logs)
-
-        Store transcriptions (maybe with Whisper or Azure STT)
-
-🛠️ Optional Features
-
-    Full-text search across all content types
-
-    Import/export APIs
-
-    Markdown + rich-text editing
-
-    End-to-end encryption for private chat or email
-
-    CLI tools or TUI interface for power users
+The project is in an early design phase. See `SERVICE_REQUIREMENTS.md` for more detail on planned features.
