@@ -19,6 +19,7 @@ This project is an experiment in consolidating multiple communication formats—
 ## Repository Structure
 
 - `SERVICE_REQUIREMENTS.md` – functional and technical requirements for the service
+- `PROTOCOLS.md` – analysis of protocols for federation and communication
 - `README.md` – this file
 
 ## Getting Started
